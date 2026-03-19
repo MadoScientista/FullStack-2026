@@ -30,6 +30,20 @@ public class BookService {
         return bookRepository.getBookByIsbn(isbn);
     }
 
+    public String getTotalBooksByYear(int year){
+
+        return String.valueOf(getBooksByYear(year).size());
+    }
+
+
+    public List<Book> getBookByAuthor(String author){
+        return bookRepository.getBookByAuthor(author);
+    }
+
+    public List<Book> getBooksByYear(int year){
+        return bookRepository.getBooksByYear(year);
+    }
+
     public String removeBook(int b){
         if(bookRepository.removeBook(b)){
             return "Libro eliminado con éxito";
