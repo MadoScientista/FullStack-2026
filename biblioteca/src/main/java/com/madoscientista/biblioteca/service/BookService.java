@@ -52,8 +52,8 @@ public class BookService {
         return "Error al eliminar el libro";
     }
 
-    public Book patchBook(Book book){
-        return bookRepository.patchBook(book);
+    public Book putBook(Book book){
+        return bookRepository.putBook(book);
     }
 
     public String getNBooks(){

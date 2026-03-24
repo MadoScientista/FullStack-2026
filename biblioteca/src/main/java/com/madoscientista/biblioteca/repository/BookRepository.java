@@ -85,7 +85,7 @@ public class BookRepository {
         return book;
     }
 
-    public Book patchBook(Book book){
+    public Book putBook(Book book){
 
         for(Book b: bookList){
             if(b.getId() == book.getId()){

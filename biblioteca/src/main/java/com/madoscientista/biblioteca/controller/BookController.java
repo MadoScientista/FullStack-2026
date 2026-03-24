@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -26,7 +27,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Book> getBooks(){
         return bookService.getBooks();
     }
@@ -56,7 +57,7 @@ public class BookController {
         return bookService.getBooksByYear(year);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Book postBook(@RequestBody Book b) {
         return bookService.postBook(b);
     }
@@ -66,9 +67,9 @@ public class BookController {
         return bookService.removeBook(id);
     }
 
-    @PatchMapping("{id}")
-    public Book patchBook(@PathVariable int id, @RequestBody Book book){
-        return bookService.patchBook(book);
+    @PutMapping("{id}")
+    public Book putBook(@PathVariable int id, @RequestBody Book book){
+        return bookService.putBook(book);
     }
 
 
