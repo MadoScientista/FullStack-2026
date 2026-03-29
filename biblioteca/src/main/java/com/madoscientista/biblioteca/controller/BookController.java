@@ -5,12 +5,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.madoscientista.biblioteca.model.Book;
 import com.madoscientista.biblioteca.service.BookService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -58,8 +61,8 @@ public class BookController {
     }
 
     @PostMapping
-    public Book postBook(@RequestBody Book b) {
-        return bookService.postBook(b);
+    public ResponseEntity<Book> postBook(@Valid @RequestBody Book b) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.postBook(b));
     }
 
     @DeleteMapping("{id}")
@@ -68,7 +71,7 @@ public class BookController {
     }
 
     @PutMapping("{id}")
-    public Book putBook(@PathVariable int id, @RequestBody Book book){
+    public Book putBook(@PathVariable int id, @Valid @RequestBody Book book){
         return bookService.putBook(book);
     }
 

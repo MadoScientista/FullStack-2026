@@ -2,10 +2,8 @@ package com.madoscientista.biblioteca.controller;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.madoscientista.biblioteca.model.Loan;
 import com.madoscientista.biblioteca.service.LoanService;
-
-import jakarta.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("api/v1/solicitudes")
