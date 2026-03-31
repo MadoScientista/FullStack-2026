@@ -24,12 +24,15 @@ public class LoanController {
     @Autowired
     LoanService service;
 
-
+    // --------------- Sección GET ---------------------
+    
+    // Retorna una lista con los préstamos disponibles
     @GetMapping
     public ResponseEntity<?> getLoans(){
         return ResponseEntity.ok(service.getLoans());
     }
 
+    // Retorna un préstamo filtrado por id
     @GetMapping("{id}")
     public ResponseEntity<?> getLoanById(@PathVariable int id){
 
@@ -41,6 +44,9 @@ public class LoanController {
         return ResponseEntity.notFound().build();
     }
 
+    // --------------- Sección POST --------------------
+
+    // Permite agregar un préstamo
     @PostMapping
     public ResponseEntity<?> postLoan(@RequestBody Loan l){
         if(service.postLoan(l) != null){

@@ -20,8 +20,11 @@ public class Book {
     @NotBlank(message = "El campo autor no puede estar vacío")
     private String author;
 
+    private int publicationDate;
+    
     @NotBlank(message = "El campo editorial no puede estar vacío")
     private String editorial;
 
-    private int publicationDate;
+    private boolean isAvailable;
+    
 }
