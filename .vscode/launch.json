@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProductosApplication",
+            "request": "launch",
+            "mainClass": "com.ejercicio.productos.ProductosApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "PrestaCompuApplication",
+            "request": "launch",
+            "mainClass": "com.example.madoscientista.prestaCompu.PrestaCompuApplication",
+            "projectName": "prestaCompu"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-BibliotecaApplication<biblioteca>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

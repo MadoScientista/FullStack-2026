@@ -30,46 +30,72 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+
+    // ---------- Sección GET ---------------
+
+    // Devuelvela lista de libros disponibles
     @GetMapping
     public List<Book> getBooks(){
         return bookService.getBooks();
     }
 
+    // Devuelve un libro filtrado por id
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable int id) {
         return bookService.getBookById(id);
     }
     
+    // Devuelve un String con una frase sobre el total de libros disponibles
     @GetMapping("/total-libros")
     public String getNBooks(){
         return bookService.getNBooks();
     }
 
+    // Devuelve una lista de libros filtrados por autor
     @GetMapping("/autor/{author}")
     public List<Book> getBookByAuthor(@PathVariable String author){
         return bookService.getBookByAuthor(author);
     }
 
+    // Devuelve un libro filtrado por isbn
     @GetMapping("/isbn/{isbn}")
     public Book getBookByIsbn(@PathVariable String isbn){
         return bookService.getBookByIsbn(isbn);
     }
 
+    // Devuelve una lista de libros filtrados por año de publicación
     @GetMapping("/year/{year}")
     public List<Book> getBooksByYear(@PathVariable int year){
         return bookService.getBooksByYear(year);
     }
 
+    // ------------- Sección POST --------------
+
+    // Agrega un libro a la lista de libros
+    // Valida que los elementos del libro sean correctos
     @PostMapping
     public ResponseEntity<Book> postBook(@Valid @RequestBody Book b) {
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.postBook(b));
     }
 
+    // ----------- Sección DELETE ----------------
+
+    // Elimina un libro filtrado por id
     @DeleteMapping("{id}")
-    public String removeBook(@PathVariable int id){
-        return bookService.removeBook(id);
+    public ResponseEntity<?> removeBook(@PathVariable int id){
+
+        if(bookService.getBookById(id) != null){
+            bookService.removeBook(id);
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+        
     }
 
+    // ----------- Sección PUT ------------------
+    
+    // Actualiza un libro filtrado por id
     @PutMapping("{id}")
     public Book putBook(@PathVariable int id, @Valid @RequestBody Book book){
         return bookService.putBook(book);
