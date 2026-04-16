@@ -8,23 +8,37 @@ import org.springframework.stereotype.Service;
 import com.madoscientista.biblioteca.model.Loan;
 import com.madoscientista.biblioteca.repository.LoanRepository;
 
+
 @Service
 public class LoanService {
 
     @Autowired
-    LoanRepository repo;
+    private LoanRepository repo;
+    //private BookService bookService;
 
+    // ----------------- Sección GET -----------------------
+
+    // Retorna una lista con los préstamos disponibles
     public List<Loan> getLoans(){
         return repo.getLoans();
+    }
+
+
+    public Loan getLoanById(int id){
+        return repo.getLoanById(id);
     }
 
     public Loan postLoan(Loan l){
         return repo.postLoan(l);
     }
 
-    public Loan getLoanById(int id){
-        return repo.getLoanById(id);
-    }
+    // public Loan postLoan(Loan l){
+    //     if(bookService.getBookById(l.getBookId()) != null && bookService.getBookById(l.getBookId()).isAvailable()){
+    //         bookService.getBookById(l.getBookId()).setAvailable(false);
+    //         return repo.postLoan(l);
+    //     }
+    //     return null;
+    // }
 
     public Loan putLoan(int id, Loan l){
         return repo.putLoan(id, l);
